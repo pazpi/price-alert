@@ -4,7 +4,7 @@ Amazon price alert
 Poll an Amazon sale page (or multiple pages) for a maximum price and send yourself an email if the price check passes.
 
 ## Installation
-Clone the repository. This code was written for python 2.7, you should also have [pip](https://pip.pypa.io/en/stable/) installed. To install external dependencies:
+Clone the repository. This code was written for python ~~2.7~~ 3, you should also have [pip](https://pip.pypa.io/en/stable/) installed. To install external dependencies:
 
 `pip install -r requirements.txt`
 
