@@ -7,7 +7,7 @@ import time
 import requests
 import smtplib
 import argparse
-import urlparse
+from urllib.parse import urlparse, urljoin
 from copy import copy
 from lxml import html
 from email.mime.multipart import MIMEMultipart
@@ -48,7 +48,7 @@ def get_price(url, selector):
         price_string = re.findall('\d+.\d+', tree.xpath(selector)[0].text)[0]
         print(price_string)
         return float(price_string.replace(',', '.'))
-    except IndexError, TypeError:
+    except (IndexError, TypeError):
         print('Didn\'t find the \'price\' element, trying again later...')
 
 
@@ -77,7 +77,7 @@ def main():
         for item in copy(items):
             print('Checking price for %s (should be lower than %s)' % (
                 item[0], item[1]))
-            item_page = urlparse.urljoin(config['base_url'], item[0])
+            item_page = urljoin(config['base_url'], item[0])
             price = get_price(item_page, config['xpath_selector'])
             if not price:
                 continue
